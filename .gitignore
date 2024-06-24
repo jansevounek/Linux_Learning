@@ -33,3 +33,4 @@ coverage
 .vscode/
 venv/
 TODO
+Learning_api/test.py
