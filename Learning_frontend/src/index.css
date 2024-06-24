@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Rubik+Wet+Paint&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kolker+Brush&family=Rubik+Glitch&family=Rubik+Wet+Paint&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kolker+Brush&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&family=Rubik+Wet+Paint&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  font-family: "Radio Canada Big", sans-serif;
+}
+
+.special-right {
+  font-family: "Rubik Wet Paint", sans-serif;
+}
+.special-left {
+  font-family: "Rubik Glitch", sans-serif;
+}
+.main-title {
+  font-family: "Bebas Neue", sans-serif;
+}
+.text-font {
+  font-family: "Montserrat", sans-serif;
+}
+
+@layer components {
+  /* Navbar shit */
+  .navbar-logo-container {
+    @apply relative flex items-center justify-center ml-4;
+  }
+
+  .navbar-icon-container {
+    @apply relative md:hidden flex flex-row items-center justify-end w-[100%] h-12 mr-2;
+  }
+
+  .navbar-text-container {
+    @apply hidden md:flex relative flex-row w-screen ml-4 items-center justify-start;
+  }
+
+  .navbar-text {
+    @apply text-font text-white text-[20px] ml-8;
+  }
+
+  .navbar-icon {
+    @apply relative flex items-center justify-center ml-4;
+  }
+
+  .expand-text {
+    @apply relative my-4 mx-16 text-white text-xl flex flex-row items-center text-nowrap;
+  }
+
+  .expand-text-icon {
+    @apply relative flex items-center justify-end w-[100%];
+  }
+
+  .main-title {
+    @apply text-[30px];
+  }
+
+  /* homepage */
+  .homepage-text {
+    @apply h-[100vh] w-[100%] grid place-items-center absolute overflow-hidden;
+  }
+
+  .homepage-text .title {
+    @apply text-[50px] w-[80vw] text-center text-white my-[0px] mx-[10vw];
+  }
+
+  #left-side {
+    @apply bg-tertiary z-20 text-secondary;
+  }
+  #left-side .title {
+    @apply text-secondary;
+  }
+  #right-side {
+    @apply bg-primary z-10;
+  }
+
+  .slider-end {
+    @apply h-10 w-[100%] absolute;
+  }
+
+  #slider-left-end {
+    @apply bg-tertiary z-20 rounded-br-3xl;
+  }
+
+  #slider-right-end {
+    @apply bg-primary z-10 rounded-bl-3xl;
+  }
+
+  /* taken from https://tailwindcomponents.com/component/button-slide-background-effect-on-hover */
+  .download-button {
+    @apply relative flex flex-row items-center justify-center border-[1px] border-white rounded-lg w-36 h-8 mx-auto hover:text-secondary hover:shadow-[inset_13rem_0_0_0] hover:shadow-tertiary hover:border-tertiary duration-[400ms,700ms] transition-[color,box-shadow];
+  }
+
+  /* taken from https://tailwindcomponents.com/component/custom-buttons-with-variations-horizon-ui-tailwind */
+  .account-button {
+    @apply rounded-xl bg-gradient-to-br from-primary to-secondary px-5 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-primary/50;
+  }
+
+  /* taken from https://tailwindcomponents.com/component/animated-button */
+  .weird-button {
+    @apply bg-none cursor-pointer inline-block flex-shrink-0 text-2xl py-3 px-3 relative text-white no-underline z-10 font-bold before:bg-secondary before:h-full before:absolute before:w-full before:-z-10 before:top-3 before:right-3 after:border-white after:border-solid after:border-2 after:h-full after:opacity-100 after:absolute after:top-0 after:right-0 after:w-full hover:before:translate-x-3 hover:before:-translate-y-3 hover:after:-translate-x-3 hover:after:translate-y-3 hover:before:transition-transform hover:before:duration-500 hover:before:ease-in hover:after:transition-transform hover:after:duration-500 hover:after:ease-in after:transition-transform after:duration-500 before:transition-transform before:duration-500;
+  }
+
+  /* taken from https://tailwindcomponents.com/component/button-with-hover-effect-and-icon-moves-away */
+  .download-button-a {
+    @apply relative overflow-hidden bg-white focus:ring-4 focus:bg-white inline-flex items-center px-7 py-2.5 rounded-lg text-secondary justify-center;
+  }
+
+  .download-button-div {
+    @apply absolute inset-0 h-[200%] w-[200%] rotate-45 translate-x-[-70%] transition-all group-hover:scale-100 bg-secondary group-hover:translate-x-[50%] z-20 duration-1000;
+  }
+
+  /* taken from https://tailwindcomponents.com/component/social-media-icons */
+  .facebook-button {
+    @apply bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded;
+  }
+
+  .twitter-button {
+    @apply bg-blue-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded;
+  }
+
+  .github-button {
+    @apply bg-gray-700 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded;
+  }
+
+  /* Login stuff */
+  .log-in-form {
+    @apply h-10 my-5 text-white w-[100%] rounded-xl bg-primary hover:shadow-lg hover:shadow-primary/50 border-2 border-white;
+  }
+  .login-form-icon {
+    @apply relative border-2 flex mx-auto rounded-3xl w-8 h-8 items-center justify-center cursor-pointer hover:text-secondary hover:shadow-[inset_13rem_0_0_0] hover:shadow-tertiary hover:border-tertiary duration-[400ms,300ms] transition-[color,box-shadow];
+  }
+  .password-strength-box {
+    @apply mx-auto bg-gradient-to-br w-12 h-6 rounded-xl border-2 border-tertiary;
+  }
+  .password-strength-1 {
+    @apply bg-gradient-to-br from-red-600 to-orange-600 border-none;
+  }
+  .password-strength-2 {
+    @apply bg-gradient-to-br from-orange-600 to-yellow-500 border-none;
+  }
+  .password-strength-3 {
+    @apply bg-gradient-to-br from-yellow-500 to-green-400 border-none;
+  }
+  .password-strength-4 {
+    @apply bg-gradient-to-br from-green-400 to-green-600 border-none;
+  }
+  .show-password-button {
+    @apply relative flex items-center justify-center my-auto ml-auto h-10 w-12 border-white border-2 rounded-xl bg-tertiary;
+  }
+  .wrong-email {
+    @apply border-red-600 text-red-500 shadow-red-500 hover:shadow-red-500/50 bg-red-600;
+  }
+
+  /* Color changing navbar */
+  .navbar-container {
+    @apply h-12 w-screen flex flex-row absolute overflow-hidden;
+  }
+
+  .carousel-part {
+    @apply sticky h-screen rounded-t-xl;
+  }
+  .first-carousel-part {
+    @apply bg-tertiary text-secondary text-center;
+  }
+  .second-carousel-part {
+    @apply bg-primary text-white text-center;
+  }
+
+  /* login stuff */
+  .login-container {
+    @apply w-screen mx-12 mt-20 h-72 text-white sm:w-80;
+  }
+
+  .signup-container {
+    @apply w-screen mx-12 mt-20 h-72 text-white sm:w-80;
+  }
+
+  .language-switch {
+    @apply h-6 w-11 rounded-full border bg-tertiary after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-slate-800 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-green-300;
+  }
+  .password-list-article {
+    @apply text-secondary bg-tertiary h-12 w-screen mx-auto;
+  }
+  .signup-error-msg {
+    @apply text-red-400 mt-5;
+  }
+
+  /* terminal stuff */
+  .terminal-input {
+    @apply absolute;
+  }
+}
