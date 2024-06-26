@@ -34,3 +34,4 @@ coverage
 venv/
 TODO
 Learning_api/test.py
+Learning_api/start.sh

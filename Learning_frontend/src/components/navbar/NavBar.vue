@@ -37,7 +37,7 @@ import { BIcon0Circle } from 'bootstrap-icons-vue';
                 </p>
             </div>
             <div class="navbar-icon" v-if="status">
-                <RouterLink to="/testlearn">
+                <RouterLink to="/lections">
                     <BIconBook class="h-5 w-5 text-white" />
                 </RouterLink>
             </div>
@@ -67,8 +67,8 @@ import { BIcon0Circle } from 'bootstrap-icons-vue';
                 </RouterLink>
             </div>
             <div class="navbar-text" v-if="status">
-                <RouterLink to="/testlearn">
-                    {{ $t("navbar.nav.testlearn") }}
+                <RouterLink to="/lections">
+                    {{ $t("navbar.nav.lections") }}
                 </RouterLink>
             </div>
             <div class="navbar-text" v-if="status">
@@ -107,8 +107,6 @@ const supportedLocales = Tr.supportedLocales
 const status = ref(false);
 
 const changeLocale = () => {
-    console.log('changing locale')
-    console.log(localeIndex.value)
     localeIndex.value = (localeIndex.value + 1) % supportedLocales.length
     i18n.locale.value = supportedLocales[localeIndex.value]
 }

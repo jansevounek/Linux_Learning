@@ -1,0 +1,6 @@
+{
+ "allowed_commands": [
+  "/bin/ls",
+  "/bin/mkdir"
+ ]
+}

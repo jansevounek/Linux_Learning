@@ -191,8 +191,23 @@ html {
     @apply text-red-400 mt-5;
   }
 
-  /* terminal stuff */
-  .terminal-input {
-    @apply absolute;
+  /* lectures stuff */
+  .lectures-list {
+    @apply flex flex-col relative w-screen h-[100%];
+  }
+  .lectures-part-list {
+    @apply flex flex-col w-screen p-4 bg-primary mt-8 text-white;
+  }
+  .lecture-box {
+    @apply bg-tertiary rounded-xl h-12 w-[80%] md:w-[600px] my-4 ml-2 text-secondary flex flex-row;
+  }
+  .lecture-title {
+    @apply my-auto ml-2 text-[20px];
+  }
+  .lecture-button { 
+    @apply ml-auto mr-2 my-auto;
+  }
+  .part-title {
+    @apply text-[30px];
   }
 }

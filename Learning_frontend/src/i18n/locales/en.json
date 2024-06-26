@@ -4,7 +4,7 @@
       "login": "Log in",
       "signup": "Sign up",
       "logout": "Log out",
-      "testlearn": "Test learn",
+      "lections": "Lections",
       "home": "Home",
       "download": "Download",
       "aboutus": "About us"
@@ -14,7 +14,7 @@
       "login": "Log in",
       "signup": "Sign up",
       "download": "Download",
-      "testlearn": "Test learn",
+      "lections": "Lections",
       "logout": "Log out"
     }
   },

@@ -46,8 +46,8 @@
                     <p class="cursor-pointer" @click="logOut">{{ $t("navbar.nav.logout") }}</p>
                 </div>
                 <div class="navbar-text text-secondary" v-if="status">
-                    <RouterLink to="/testlearn">
-                        {{ $t("navbar.nav.testlearn") }}
+                    <RouterLink to="/lections">
+                        {{ $t("navbar.nav.lections") }}
                     </RouterLink>
                 </div>
                 <div class="navbar-text text-secondary">
