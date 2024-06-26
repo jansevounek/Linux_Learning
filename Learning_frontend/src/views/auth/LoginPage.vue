@@ -34,8 +34,8 @@
 <script setup>
 import VueTypewriterEffect from "vue-typewriter-effect";
 import { ref, computed } from 'vue'
-import LoginSignupSocials from '../components/login-signup/LoginSignupSocials.vue'
-import { supabase } from '../supabase/init'
+import LoginSignupSocials from '../../components/login-signup/LoginSignupSocials.vue'
+import { supabase } from '../../supabase/init'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

@@ -6,7 +6,7 @@
                 <div class="lecture-box">
                     <h1 class="lecture-title">The Basics</h1>
                     <button class="lecture-button">Learn</button>
-                    <RouterLink to="/testlection" class="lecture-button">
+                    <RouterLink to="/trycommands" class="lecture-button">
                         <button>Try</button>
                     </RouterLink>
                     <button class="lecture-button">Test</button>

@@ -3,7 +3,9 @@ import subprocess
 from flask_cors import CORS
 import json
 import docker
-import io
+import os
+import shutil
+import tempfile
 
 
 app = Flask(__name__)
@@ -39,7 +41,7 @@ def dump_commands_into_json_file(data):
 
     json_object = json.dumps(commands, indent=1)
 
-    with open("docker/commands.json", "w") as outfile:
+    with open("commands.json", "w") as outfile:
         outfile.write(json_object)
 
 def start_docker_container():
@@ -65,30 +67,47 @@ def start_docker_container():
 
     json_file = 'commands.json'
 
-    sudoers_content = ''
+    sudoers_commands = []
 
     with open(json_file, 'r') as f:
-        import json
         commands = json.load(f)
         for command in commands['allowed_commands']:
-            sudoers_content += f"user ALL=(ALL) NOPASSWD: {command};\n"
+            sudoers_commands.append(f"echo 'user ALL=(ALL) NOPASSWD: {command};' | tee -a /etc/sudoers")
 
-    dockerfile_content = (
-        "FROM {}\n"
-        "RUN apk update && apk add --no-cache {}\n"
-        "COPY {} /etc/{}\n"
-        "RUN adduser -D user\n"
-        "RUN echo '{}' >> /etc/sudoers\n"
-        "USER user\n"
-        "CMD [\"/bin/bash\"]\n"
-    ).format(base_image, ' '.join(packages), json_file, json_file, sudoers_content)
 
-    fileobj = io.BytesIO(dockerfile_content.encode('utf-8'))
+    sudoers_content = " && \\\n".join(sudoers_commands)
 
-    client.images.build(
-        fileobj=fileobj,
-        rm=True
-    )
+    dockerfile_content = f"""
+        FROM {base_image}
+        RUN apk update && apk add --no-cache {' '.join(packages)}
+        COPY {json_file} /etc/{json_file}
+        RUN adduser -D user
+        RUN {sudoers_content.strip()}
+        USER user
+        CMD ["/bin/bash"]
+        """
+
+    temp_dir = tempfile.mkdtemp()
+    try:
+        with open(os.path.join(temp_dir, 'Dockerfile'), 'w') as dockerfile:
+            dockerfile.write(dockerfile_content)
+
+        shutil.copy(json_file, temp_dir)
+
+        response = client.images.build(
+            path=temp_dir,
+            tag='web_image',
+            rm=True
+        )
+        client.containers.run(
+            'web_image',
+            detach=True
+        )
+        print(response)
+    finally:
+        shutil.rmtree(temp_dir)
+    
+    subprocess.run('sudo docker ps -a', shell = True, executable = "/bin/bash", stderr = subprocess.STDOUT)
     
 
 if __name__ == '__main__':

@@ -5,5 +5,5 @@
 </template>
 
 <script setup>
-import learningTerminal from "../components/learning/learningTerminal.vue";
+import learningTerminal from "../../components/learning/learningTerminal.vue";
 </script>

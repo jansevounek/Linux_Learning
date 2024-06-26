@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../views/HomePage.vue";
-import LoginPage from "../views/LoginPage.vue";
-import SignupPage from "../views/SignupPage.vue";
+import LoginPage from "../views/auth/LoginPage.vue";
+import SignupPage from "../views/auth/SignupPage.vue";
 import LectionsListPage from "../views/LectionsListPage.vue";
-import LectionPage from "../views/LectionPage.vue";
+import TryCommandsPage from "../views/learning/tryCommandsPage.vue";
 import { supabase } from "../supabase/init";
 
 let localUser;
@@ -35,9 +35,9 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: "/testlection",
-      name: "testlection",
-      component: LectionPage,
+      path: "/trycommands",
+      name: "trycommands",
+      component: TryCommandsPage,
       meta: { requiresAuth: true },
     },
   ],

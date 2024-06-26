@@ -49,9 +49,9 @@
 <script setup>
 import VueTypewriterEffect from "vue-typewriter-effect";
 import { ref, computed } from 'vue'
-import { supabase } from '../supabase/init'
+import { supabase } from '../../supabase/init'
 import { useRouter } from 'vue-router'
-import LoginSignupSocials from '../components/login-signup/LoginSignupSocials.vue'
+import LoginSignupSocials from '../../components/login-signup/LoginSignupSocials.vue'
 
 const showPassword = ref(false)
 
