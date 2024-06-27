@@ -23,6 +23,11 @@
                     </p>
                 </div>
                 <div class="navbar-icon">
+                    <RouterLink to="/lections" v-if="status">
+                        <BIconBook class="h-5 w-5 text-white" />
+                    </RouterLink>
+                </div>
+                <div class="navbar-icon">
                     <button @click="changeLocale" class="language-button">
                         <BIconTranslate class="h-5 w-5 text-white" />
                     </button>

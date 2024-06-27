@@ -59,5 +59,14 @@
       "password1": "Hesla nejsou stejná",
       "password2": "Heslo není dostatečně silné"
     }
+  },
+  "learning": {
+    "trycommands": {
+      "header": "Toto je testovací stránka",
+      "text1": "Můžete si vyzkoušet příkazi které jste se naučili v testovací sekci",
+      "text2": "Tip: příkaz 'clear' vyčistí všechny logy předešlích příkazů - jako na linuxu :)",
+      "textsession": "Pro spuštění jednoho učícího procesu napište příkaz",
+      "button": "Spustit"
+    }
   }
 }

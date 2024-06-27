@@ -1,38 +1,32 @@
 <template>
-    <div v-if="sessionStarted">
-        <input type="text" v-model="test_text">
-        <button @click="testCommand" class="text-white">Submit</button>
+    <div class="flex flex-col text-primary mx-4 mt-4">
+        <div class="whitespace-pre-line">{{ console_output }}</div>
+        <div class="flex flex-row text-primary">
+            <p>user@ubuntu:~$</p>
+            <form action="" @submit.prevent="testCommand">
+                <input type="text" class="bg-inherit ml-2 outline-none" v-model="test_text">
+                <button class="relative md:hidden">Execute</button>
+            </form>
+        </div>
     </div>
-    <button v-if="!sessionStarted" class="text-white" @click="startSession">Start Session</button>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
 const test_text = ref('')
-let sessionStarted = ref(false)
+const console_output = ref('')
 
-async function testCommand() {    
-    const response = await fetch("http://127.0.0.1:5000/test/" + test_text.value);
-    const command = await response.json()
-    console.log(command.command)
+async function testCommand() {
+    if (test_text.value == "clear") {
+        console_output.value = ''
+        test_text.value = ""
+    } else {
+        const response = await fetch("http://127.0.0.1:5000/test/" + test_text.value);
+        const command = await response.json()
+        console_output.value += 'user@ubuntu:~$ \n' + command.command
+        test_text.value = ""
+    }
 }
 
-async function startSession() {
-    sessionStarted.value = !sessionStarted.value
-    fetch("http://127.0.0.1:5000/start_session", {
-        method: "post",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            allowed_commands: 'cd, ls, mkdir, rm, rm -r'
-        })
-    })
-    
-    .then( (response) => { 
-        console.log("ok")
-    });
-}
 </script>

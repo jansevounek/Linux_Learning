@@ -59,5 +59,15 @@
       "password1": "Passwords do not match!",
       "password2": "Password is too weak"
     }
+  },
+  "learning": {
+    "trycommands": {
+      "header": "This is the testing site",
+      "text1": "You can try the commands you learned in the learning section",
+      "text2": "Tip: typing 'clear' clears all the logs of previous commands - like on linux :)",
+      "textsession": "To start a learning session type the command",
+      "button": "Execute"
+    }
   }
+
 }
